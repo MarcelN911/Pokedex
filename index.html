@@ -5,12 +5,165 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="script.js" defer></script>
-
 </head>
-<body>
-    
+<body onload="onload()">
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="Pokeball" class="logo-icon">
+                <h1>Pokédex</h1>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Pokemon suchen..." class="search-input">
+                <button class="search-btn">🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="pokemon-container" id="pokemonContainer">
+            <article class="pokemon-card bg-grass">
+                <div class="card-header">
+                    <span class="pokemon-id">#001</span>
+                    <span class="pokemon-name">Bulbasaur</span>
+                </div>
+                <div class="card-image">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="Bulbasaur">
+                </div>
+                <div class="card-types">
+                    <span class="type-badge type-grass">Grass</span>
+                    <span class="type-badge type-poison">Poison</span>
+                </div>
+                <div class="card-stats">
+                    <div class="stat">
+                        <span class="stat-label">HP</span>
+                        <div class="stat-bar">
+                            <div class="stat-fill" style="width: 45%;"></div>
+                        </div>
+                        <span class="stat-value">45</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">ATK</span>
+                        <div class="stat-bar">
+                            <div class="stat-fill" style="width: 49%;"></div>
+                        </div>
+                        <span class="stat-value">49</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">DEF</span>
+                        <div class="stat-bar">
+                            <div class="stat-fill" style="width: 49%;"></div>
+                        </div>
+                        <span class="stat-value">49</span>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+        <div class="load-more-container">
+            <button class="load-more-btn" id="loadMoreBtn">Mehr Pokemon laden</button>
+        </div>
+    </main>
+
+    <div class="modal-overlay active" id="modalOverlay">
+        <div class="modal bg-grass" id="pokemonModal">
+            <button class="modal-close" id="modalClose">×</button>
+            <button class="modal-nav modal-prev" id="modalPrev">◀</button>
+            <button class="modal-nav modal-next" id="modalNext">▶</button>
+            
+            <div class="modal-header">
+                <span class="modal-id">#001</span>
+                <h2 class="modal-name">Bulbasaur</h2>
+                <div class="modal-types">
+                    <span class="type-badge type-grass">Grass</span>
+                    <span class="type-badge type-poison">Poison</span>
+                </div>
+            </div>
+            
+            <div class="modal-image">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="Bulbasaur">
+            </div>
+            
+            <div class="modal-tabs">
+                <button class="tab-btn active" data-tab="about">About</button>
+                <button class="tab-btn" data-tab="stats">Stats</button>
+                <button class="tab-btn" data-tab="moves">Moves</button>
+            </div>
+            
+            <div class="modal-content">
+                <div class="tab-content active" id="tab-about">
+                    <div class="info-row">
+                        <span class="info-label">Height</span>
+                        <span class="info-value">0.7 m</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Weight</span>
+                        <span class="info-value">6.9 kg</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Abilities</span>
+                        <span class="info-value">Overgrow, Chlorophyll</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Base Exp</span>
+                        <span class="info-value">64</span>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="tab-stats">
+                    <div class="stat">
+                        <span class="stat-label">HP</span>
+                        <div class="stat-bar"><div class="stat-fill" style="width: 45%;"></div></div>
+                        <span class="stat-value">45</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">ATK</span>
+                        <div class="stat-bar"><div class="stat-fill" style="width: 49%;"></div></div>
+                        <span class="stat-value">49</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">DEF</span>
+                        <div class="stat-bar"><div class="stat-fill" style="width: 49%;"></div></div>
+                        <span class="stat-value">49</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">SP.ATK</span>
+                        <div class="stat-bar"><div class="stat-fill" style="width: 65%;"></div></div>
+                        <span class="stat-value">65</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">SP.DEF</span>
+                        <div class="stat-bar"><div class="stat-fill" style="width: 65%;"></div></div>
+                        <span class="stat-value">65</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">SPEED</span>
+                        <div class="stat-bar"><div class="stat-fill" style="width: 45%;"></div></div>
+                        <span class="stat-value">45</span>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="tab-moves">
+                    <div class="moves-list">
+                        <span class="move-badge">Tackle</span>
+                        <span class="move-badge">Growl</span>
+                        <span class="move-badge">Vine Whip</span>
+                        <span class="move-badge">Razor Leaf</span>
+                        <span class="move-badge">Solar Beam</span>
+                        <span class="move-badge">Sleep Powder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Pokédex App © 2026</p>
+    </footer>
 </body>
 </html>
