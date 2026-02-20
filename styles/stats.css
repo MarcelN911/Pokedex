@@ -1,0 +1,47 @@
+/* Stat Styles für Card und Modal */
+
+.card-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 20px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    width: 35px;
+    text-transform: uppercase;
+}
+
+.stat-bar {
+    flex: 1;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.stat-fill {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.stat-value {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: white;
+    width: 30px;
+    text-align: right;
+}
