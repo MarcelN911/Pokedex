@@ -56,3 +56,4 @@ function getAbilitiesTemplate(pokemon) {
     }
     return abilities;
 }
+

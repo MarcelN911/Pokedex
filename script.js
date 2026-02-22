@@ -1,4 +1,11 @@
 let url = "https://pokeapi.co/api/v2/pokemon/";
+let firstPokemon = 1; 
+let cardCounter = 10; 
+
+async function init() {
+    let pokemon = await loadPokemon(1);
+    createAllCards();
+}
 
 async function loadPokemon(id) {
     let response = await fetch(url + id);
@@ -9,11 +16,6 @@ async function loadPokemon(id) {
 function createCard(pokemon) {
     let container = document.getElementById("pokemonContainer");
     container.innerHTML += createCardTemplate(pokemon);
-}
-
-async function init() {
-    let pokemon = await loadPokemon(1);
-    createAllCards();
 }
 
 function getSecondType(pokemon) {
@@ -27,16 +29,25 @@ async function openModal(id) {
     let modal = document.getElementById("modalOverlay");
     modal.classList.add("active");
     let pokemon = await loadPokemon(id);
+    currentPokemonId = id;
     modal.innerHTML = createCardModal(pokemon);
+    modalContentAbout(pokemon);
+}
+
+async function updateModal(direction) {
+    let newId = currentPokemonId + direction;
+    if (newId < 1) newId = 1;
+    if (newId > cardCounter) return;
+    let pokemon = await loadPokemon(newId);
+    currentPokemonId = newId;
+    document.getElementById("pokemonModal").outerHTML = createCardModal(pokemon);
+    modalContentAbout(pokemon);
 }
 
 function closeModal() {
     let modal = document.getElementById("modalOverlay");
     modal.classList.remove("active");
 }
-
-let firstPokemon = 1; 
-let cardCounter = 20; 
 
 async function createAllCards() {
     for (let index = firstPokemon; index <= cardCounter; index++) {
@@ -47,7 +58,7 @@ async function createAllCards() {
 
 async function loadMoreCards() {
     firstPokemon = cardCounter + 1;
-    cardCounter = cardCounter + 20;
+    cardCounter = cardCounter + 10;
     createAllCards();
 }
 

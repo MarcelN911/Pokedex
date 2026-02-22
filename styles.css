@@ -148,24 +148,24 @@ body {
     z-index: 0;
 }
 
-.pokemon-card.bg-normal { background: linear-gradient(180deg, #c4c4a8 0%, #a8a878 100%); }
-.pokemon-card.bg-fire { background: linear-gradient(180deg, #f5a060 0%, #f08030 100%); }
-.pokemon-card.bg-water { background: linear-gradient(180deg, #8eb0f5 0%, #6890f0 100%); }
-.pokemon-card.bg-electric { background: linear-gradient(180deg, #fae060 0%, #f8d030 100%); }
-.pokemon-card.bg-grass { background: linear-gradient(180deg, #98d870 0%, #78c850 100%); }
-.pokemon-card.bg-ice { background: linear-gradient(180deg, #b8e8e8 0%, #98d8d8 100%); }
-.pokemon-card.bg-fighting { background: linear-gradient(180deg, #d05048 0%, #c03028 100%); }
-.pokemon-card.bg-poison { background: linear-gradient(180deg, #c060c0 0%, #a040a0 100%); }
-.pokemon-card.bg-ground { background: linear-gradient(180deg, #ecd888 0%, #e0c068 100%); }
-.pokemon-card.bg-flying { background: linear-gradient(180deg, #c8b0f5 0%, #a890f0 100%); }
-.pokemon-card.bg-psychic { background: linear-gradient(180deg, #fa78a8 0%, #f85888 100%); }
-.pokemon-card.bg-bug { background: linear-gradient(180deg, #c8d840 0%, #a8b820 100%); }
-.pokemon-card.bg-rock { background: linear-gradient(180deg, #d0c058 0%, #b8a038 100%); }
-.pokemon-card.bg-ghost { background: linear-gradient(180deg, #9078b8 0%, #705898 100%); }
-.pokemon-card.bg-dragon { background: linear-gradient(180deg, #9058f8 0%, #7038f8 100%); }
-.pokemon-card.bg-dark { background: linear-gradient(180deg, #907868 0%, #705848 100%); }
-.pokemon-card.bg-steel { background: linear-gradient(180deg, #d0d0e0 0%, #b8b8d0 100%); }
-.pokemon-card.bg-fairy { background: linear-gradient(180deg, #f4b9cc 0%, #ee99ac 100%); }
+.bg-normal { background: linear-gradient(180deg, #c4c4a8 0%, #a8a878 100%); }
+.bg-fire { background: linear-gradient(180deg, #f5a060 0%, #f08030 100%); }
+.bg-water { background: linear-gradient(180deg, #8eb0f5 0%, #6890f0 100%); }
+.bg-electric { background: linear-gradient(180deg, #fae060 0%, #f8d030 100%); }
+.bg-grass { background: linear-gradient(180deg, #98d870 0%, #78c850 100%); }
+.bg-ice { background: linear-gradient(180deg, #b8e8e8 0%, #98d8d8 100%); }
+.bg-fighting { background: linear-gradient(180deg, #d05048 0%, #c03028 100%); }
+.bg-poison { background: linear-gradient(180deg, #c060c0 0%, #a040a0 100%); }
+.bg-ground { background: linear-gradient(180deg, #ecd888 0%, #e0c068 100%); }
+.bg-flying { background: linear-gradient(180deg, #c8b0f5 0%, #a890f0 100%); }
+.bg-psychic { background: linear-gradient(180deg, #fa78a8 0%, #f85888 100%); }
+.bg-bug { background: linear-gradient(180deg, #c8d840 0%, #a8b820 100%); }
+.bg-rock { background: linear-gradient(180deg, #d0c058 0%, #b8a038 100%); }
+.bg-ghost { background: linear-gradient(180deg, #9078b8 0%, #705898 100%); }
+.bg-dragon { background: linear-gradient(180deg, #9058f8 0%, #7038f8 100%); }
+.bg-dark { background: linear-gradient(180deg, #907868 0%, #705848 100%); }
+.bg-steel { background: linear-gradient(180deg, #d0d0e0 0%, #b8b8d0 100%); }
+.bg-fairy { background: linear-gradient(180deg, #f4b9cc 0%, #ee99ac 100%); }
 
 .pokemon-card:hover {
     transform: translateY(-8px);

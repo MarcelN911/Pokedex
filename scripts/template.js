@@ -51,8 +51,8 @@ function createCardModal(pokemon) {
     return `
         <div class="modal bg-${data.mainType}" id="pokemonModal">
             <button class="modal-close" id="modalClose" onclick="closeModal()">×</button>
-            <button class="modal-nav modal-prev" id="modalPrev">◀</button>
-            <button class="modal-nav modal-next" id="modalNext">▶</button>
+            <button class="modal-nav modal-prev" id="modalPrev" onclick="updateModal(-1)">◀</button>
+            <button class="modal-nav modal-next" id="modalNext" onclick="updateModal(1)">▶</button>
             <div class="modal-header">
                 <span class="modal-id">#${data.id.toString().padStart(3, '0')}</span>
                 <h2 class="modal-name">${data.name.charAt(0).toUpperCase() + data.name.slice(1)}</h2>
@@ -64,38 +64,45 @@ function createCardModal(pokemon) {
                 <img src="${data.img}" alt="${data.name}">
             </div>
             <div class="modal-tabs">
-                <button class="tab-btn active" data-tab="about">About</button>
-                <button class="tab-btn" data-tab="stats">Stats</button>
-                <button class="tab-btn" data-tab="moves">Moves</button>
+                    <button class="tab-btn active" data-tab="about" onclick="switchModalTab('about')">About</button>
+                    <button class="tab-btn" data-tab="stats" onclick="switchModalTab('stats')">Stats</button>
+                    <button class="tab-btn" data-tab="moves" onclick="switchModalTab('moves')">Moves</button>
             </div>
-            <div class="modal-content">
-                <div class="tab-content active" id="tab-about">
-                    <div class="info-row">
-                        <span class="info-label">Height</span>
-                        <span class="info-value">${data.height}</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Weight</span>
-                        <span class="info-value">${data.weight}</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Abilities</span>
-                        <span class="info-value">${data.abilities}</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Base Exp</span>
-                        <span class="info-value">${data.baseExp}</span>
-                    </div>
-                </div>
-                <div class="tab-content" id="tab-stats">
-                    ${data.stats}
-                </div>
-                <div class="tab-content" id="tab-moves">
-                    <div class="moves-list">
-                        ${data.moves}
-                    </div>
-                </div>
+            <div class="modal-content" id="modalContent">
+                
             </div>
         </div>
+    `;
+}
+
+function modalContentAbout(pokemon) {
+    const data = getModalData(pokemon);
+    document.getElementById("modalContent").innerHTML = `
+        <div class="tab-content active" id="tab-about">
+            <div class="info-row">
+                <span class="info-label">Height</span>
+                <span class="info-value">${data.height}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Weight</span>
+                <span class="info-value">${data.weight}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Abilities</span>
+                <span class="info-value">${data.abilities}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Base Exp</span>
+                <span class="info-value">${data.baseExp}</span>
+            </div>
+            </div>
+            <div class="tab-content" id="tab-stats">
+                ${data.stats}
+            </div>
+            <div class="tab-content" id="tab-moves">
+                <div class="moves-list">
+                    ${data.moves}
+                </div>
+            </div>
     `;
 }
