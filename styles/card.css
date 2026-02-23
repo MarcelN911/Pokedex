@@ -34,13 +34,13 @@
 }
 
 .pokemon-id {
-    font-size: 0.85rem;
+    font-size: 14px;
     font-weight: 700;
     color: #888;
 }
 
 .pokemon-name {
-    font-size: 1.2rem;
+    font-size: 19px;
     font-weight: 700;
     color: #333;
     text-transform: capitalize;
@@ -79,7 +79,7 @@
 .type-badge {
     padding: 6px 16px;
     border-radius: 20px;
-    font-size: 0.75rem;
+    font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
     color: white;

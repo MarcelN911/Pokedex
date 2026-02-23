@@ -1,16 +1,52 @@
-let url = "https://pokeapi.co/api/v2/pokemon/";
-let firstPokemon = 1; 
-let cardCounter = 10; 
+
+const apiBaseUrl = "https://pokeapi.co/api/v2/pokemon/";
+let firstPokemon = 1;
+let cardCounter = 10;
+let allPokemonMetaList = [];
+
 
 async function init() {
-    let pokemon = await loadPokemon(1);
+    await loadAllPokemonMetaList();
     createAllCards();
 }
 
+async function loadAllPokemonMetaList() {
+    let maxPokemon = 200;
+    let response = await fetch(apiBaseUrl + `?limit=${maxPokemon}`);
+    let data = await response.json();
+    allPokemonMetaList = data.results;
+}
+
+
 async function loadPokemon(id) {
-    let response = await fetch(url + id);
+    let response = await fetch(apiBaseUrl + id);
     let pokemon = await response.json();
     return pokemon;
+}
+
+async function loadPokemonByUrl(pokemonUrl) {
+    let response = await fetch(pokemonUrl);
+    return await response.json();
+}
+
+function filterPokemonByName(searchValue) {
+    return allPokemonMetaList.filter(pokemonMeta =>
+        pokemonMeta.name.toLowerCase().includes(searchValue)
+    );
+}
+
+async function showSearchedPokemon() {
+    let searchValue = document.getElementById("searchInput").value.toLowerCase();
+    let container = document.getElementById("pokemonContainer");
+    container.innerHTML = "";
+
+    let filteredPokemon = filterPokemonByName(searchValue);
+
+    let maxResults = 20;
+    for (let i = 0; i < filteredPokemon.length && i < maxResults; i++) {
+        let pokemon = await loadPokemonByUrl(filteredPokemon[i].url);
+        createCard(pokemon);
+    }
 }
 
 function createCard(pokemon) {
@@ -25,30 +61,6 @@ function getSecondType(pokemon) {
     return "";
 }
 
-async function openModal(id) {
-    let modal = document.getElementById("modalOverlay");
-    modal.classList.add("active");
-    let pokemon = await loadPokemon(id);
-    currentPokemonId = id;
-    modal.innerHTML = createCardModal(pokemon);
-    modalContentAbout(pokemon);
-}
-
-async function updateModal(direction) {
-    let newId = currentPokemonId + direction;
-    if (newId < 1) newId = 1;
-    if (newId > cardCounter) return;
-    let pokemon = await loadPokemon(newId);
-    currentPokemonId = newId;
-    document.getElementById("pokemonModal").outerHTML = createCardModal(pokemon);
-    modalContentAbout(pokemon);
-}
-
-function closeModal() {
-    let modal = document.getElementById("modalOverlay");
-    modal.classList.remove("active");
-}
-
 async function createAllCards() {
     for (let index = firstPokemon; index <= cardCounter; index++) {
         let pokemon = await loadPokemon(index);
@@ -60,6 +72,20 @@ async function loadMoreCards() {
     firstPokemon = cardCounter + 1;
     cardCounter = cardCounter + 10;
     createAllCards();
+}
+
+function searchPokemon() {
+    let searchValue = document.getElementById("searchInput").value.toLowerCase();
+    let container = document.getElementById("pokemonContainer");
+    container.innerHTML = "";
+
+    for (let index = 1; index <= cardCounter; index++) {
+        loadPokemon(index).then(pokemon => {
+            if (pokemon.name.toLowerCase().search(searchValue) !== -1) {
+                createCard(pokemon);
+            }
+        });
+    }
 }
 
 

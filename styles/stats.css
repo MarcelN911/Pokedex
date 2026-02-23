@@ -13,8 +13,15 @@
     gap: 10px;
 }
 
+.stat-modal {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0;
+}
+
 .stat-label {
-    font-size: 0.75rem;
+    font-size: 16px;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.8);
     width: 35px;
@@ -23,7 +30,7 @@
 
 .stat-bar {
     flex: 1;
-    height: 8px;
+    height: 10px;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     overflow: hidden;
@@ -37,7 +44,7 @@
 }
 
 .stat-value {
-    font-size: 0.85rem;
+    font-size: 16px;
     font-weight: 600;
     color: white;
     width: 30px;

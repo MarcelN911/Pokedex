@@ -4,7 +4,7 @@
         text-align: center;
     }
     .logo h1 {
-        font-size: 1.5rem;
+        font-size: 24px;
     }
     .search-input {
         width: 200px;
@@ -38,10 +38,10 @@
     .modal-nav {
         width: 32px;
         height: 32px;
-        font-size: 0.8rem;
+        font-size: 13px;
     }
     .modal-name {
-        font-size: 1.2rem;
+        font-size: 19px;
     }
     .modal-image img {
         width: 140px;
@@ -49,13 +49,13 @@
     }
     .tab-btn {
         padding: 8px 12px;
-        font-size: 0.75rem;
+        font-size: 12px;
     }
     .pokemon-card {
         width: 95%;
     }
     .type-badge {
         padding: 4px 8px;
-        font-size: 0.65rem;
+        font-size: 10px;
     }
 }

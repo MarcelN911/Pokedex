@@ -39,6 +39,11 @@ body {
     z-index: 100;
 }
 
+header a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .header-content {
     max-width: 1400px;
     margin: 0 auto;

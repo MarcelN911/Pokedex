@@ -64,9 +64,9 @@ function createCardModal(pokemon) {
                 <img src="${data.img}" alt="${data.name}">
             </div>
             <div class="modal-tabs">
-                    <button class="tab-btn active" data-tab="about" onclick="switchModalTab('about')">About</button>
-                    <button class="tab-btn" data-tab="stats" onclick="switchModalTab('stats')">Stats</button>
-                    <button class="tab-btn" data-tab="moves" onclick="switchModalTab('moves')">Moves</button>
+                    <button class="tab-btn active" data-tab="about" onclick="switchTab('about')">About</button>
+                    <button class="tab-btn" data-tab="stats" onclick="switchTab('stats')">Stats</button>
+                    <button class="tab-btn" data-tab="moves" onclick="switchTab('moves')">Moves</button>
             </div>
             <div class="modal-content" id="modalContent">
                 
@@ -77,7 +77,7 @@ function createCardModal(pokemon) {
 
 function modalContentAbout(pokemon) {
     const data = getModalData(pokemon);
-    document.getElementById("modalContent").innerHTML = `
+    return `
         <div class="tab-content active" id="tab-about">
             <div class="info-row">
                 <span class="info-label">Height</span>
@@ -104,5 +104,52 @@ function modalContentAbout(pokemon) {
                     ${data.moves}
                 </div>
             </div>
+    `;
+}
+
+function getStatsTemplate(pokemon) {
+    let statsHtml = "";
+
+    statsHtml += '<div class="stat-modal">';
+    statsHtml += '<span class="stat-label">HP</span>';
+    statsHtml += '<div class="stat-bar"><div class="stat-fill" style="width: ' + pokemon.stats[0].base_stat + '%;"></div></div>';
+    statsHtml += '<span class="stat-value">' + pokemon.stats[0].base_stat + '</span>';
+    statsHtml += '</div>';
+
+    statsHtml += '<div class="stat-modal">';
+    statsHtml += '<span class="stat-label">ATK</span>';
+    statsHtml += '<div class="stat-bar"><div class="stat-fill" style="width: ' + pokemon.stats[1].base_stat + '%;"></div></div>';
+    statsHtml += '<span class="stat-value">' + pokemon.stats[1].base_stat + '</span>';
+    statsHtml += '</div>';
+
+    statsHtml += '<div class="stat-modal">';
+    statsHtml += '<span class="stat-label">DEF</span>';
+    statsHtml += '<div class="stat-bar"><div class="stat-fill" style="width: ' + pokemon.stats[2].base_stat + '%;"></div></div>';
+    statsHtml += '<span class="stat-value">' + pokemon.stats[2].base_stat + '</span>';
+    statsHtml += '</div>';
+
+    statsHtml += '<div class="stat-modal">';
+    statsHtml += '<span class="stat-label">SPD</span>';
+    statsHtml += '<div class="stat-bar"><div class="stat-fill" style="width: ' + pokemon.stats[5].base_stat + '%;"></div></div>';
+    statsHtml += '<span class="stat-value">' + pokemon.stats[5].base_stat + '</span>';
+    statsHtml += '</div>';
+    return statsHtml;
+}
+
+function modalContentStats(pokemon) {
+    const data = getModalData(pokemon);
+    return ` 
+        <div class="stats-list">
+            ${data.stats}
+        </div>
+    `;
+}
+
+function modalContentMoves(pokemon) {
+    const data = getModalData(pokemon);
+    return `
+        <div class="moves-list">
+            ${getMovesTemplate(pokemon)}
+        </div>
     `;
 }

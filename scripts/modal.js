@@ -1,3 +1,29 @@
+async function openModal(id) {
+    let modal = document.getElementById("modalOverlay");
+    modal.classList.add("active");
+    let pokemon = await loadPokemon(id);
+    window.currentPokemonId = id;
+    window.currentPokemon = pokemon;
+    modal.innerHTML = createCardModal(pokemon);
+    document.getElementById("modalContent").innerHTML = modalContentAbout(pokemon);
+}
+
+async function updateModal(direction) {
+    let newId = window.currentPokemonId + direction;
+    if (newId < 1) newId = 1;
+    if (newId > cardCounter) return;
+    let pokemon = await loadPokemon(newId);
+    window.currentPokemonId = newId;
+    window.currentPokemon = pokemon;
+    document.getElementById("pokemonModal").outerHTML = createCardModal(pokemon);
+    document.getElementById("modalContent").innerHTML = modalContentAbout(pokemon);
+}
+
+function closeModal() {
+    let modal = document.getElementById("modalOverlay");
+    modal.classList.remove("active");
+}
+
 function getModalData(pokemon) {
     return {
         id: pokemon.id,
@@ -23,22 +49,6 @@ function getTypesTemplate(pokemon) {
     return typesHtml;
 }
 
-function getStatsTemplate(pokemon) {
-    let statsHtml = "";
-    for (let index = 0; index < pokemon.stats.length; index++) {
-        const statName = pokemon.stats[index].stat.name.toUpperCase();
-        const statValue = pokemon.stats[index].base_stat;
-        let statWidth = statValue;
-        if (statWidth > 100) statWidth = 100;
-        statsHtml += '<div class="stat">';
-        statsHtml += '<span class="stat-label">' + statName + '</span>';
-        statsHtml += '<div class="stat-bar"><div class="stat-fill" style="width: ' + statWidth + '%;"></div></div>';
-        statsHtml += '<span class="stat-value">' + statValue + '</span>';
-        statsHtml += '</div>';
-    }
-    return statsHtml;
-}
-
 function getMovesTemplate(pokemon) {
     let movesHtml = "";
     for (let index = 0; index < 6 && index < pokemon.moves.length; index++) {
@@ -57,3 +67,24 @@ function getAbilitiesTemplate(pokemon) {
     return abilities;
 }
 
+async function switchTab(tab) {
+    let content = document.getElementById("modalContent");
+    let pokemon = window.currentPokemon;
+    if (tab === "about") {
+        content.innerHTML = modalContentAbout(pokemon);
+        setActiveTab("about");
+    } else if (tab === "stats") {
+        content.innerHTML = modalContentStats(pokemon);
+        setActiveTab("stats");
+    } else if (tab === "moves") {
+        content.innerHTML = modalContentMoves(pokemon);
+        setActiveTab("moves");
+    }
+}
+
+function setActiveTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove("active");
+    });
+    document.querySelector('.tab-btn[data-tab="' + tab + '"]').classList.add("active");
+}
