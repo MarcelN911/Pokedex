@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
 
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles/stats.css">
     <link rel="stylesheet" href="styles/card.css">
@@ -26,19 +27,22 @@
                 <a href="index.html"><h1>Pokédex</h1></a>
             </div>
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Pokemon suchen..." class="search-input">
+                <input type="text" id="searchInput" placeholder="search Pokemon ..." class="search-input" minlength="3" alert="Please enter at least 3 characters">
                 <button class="search-btn" onclick="showSearchedPokemon()">🔍</button>
             </div>
         </div>
     </header>
 
     <main class="main-content">
+        <div class="alert" id="alert">
+    
+        </div>
         <section class="pokemon-container" id="pokemonContainer">
             
         </section>
 
         <div class="load-more-container">
-            <button class="load-more-btn" id="loadMoreBtn" onclick="loadMoreCards()">Mehr Pokemon laden</button>
+            <button class="load-more-btn" id="loadMoreBtn" onclick="loadMoreCards()">load more Pokemon</button>
         </div>
     </main>
 
@@ -49,5 +53,10 @@
     <footer class="footer">
         <p>Pokédex App © 2026</p>
     </footer>
+
+    <div id="loaderOverlay" class="loader-overlay" style="display: none;">
+      <div class="pokeball-loader"></div>
+      <span class="loader-text">load Pokémon...</span>
+    </div>
 </body>
 </html>

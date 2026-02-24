@@ -6,7 +6,7 @@ function createCardTemplate(pokemon) {
                     <span class="pokemon-name">${pokemon.name}</span>
                 </div>
                 <div class="card-image">
-                    <img src="${pokemon.sprites.other["official-artwork"].front_default}" alt="${pokemon.name}">
+                    <img src="${pokemon.sprites.other["official-artwork"].front_default}" alt="${pokemon.name}" loading="lazy">
                 </div>
                 <div class="card-types">
                     <span class="type-badge type-${pokemon.types[0].type.name}">${pokemon.types[0].type.name}</span>
@@ -61,7 +61,7 @@ function createCardModal(pokemon) {
                 </div>
             </div>
             <div class="modal-image">
-                <img src="${data.img}" alt="${data.name}">
+                <img src="${data.img}" alt="${data.name}" loading="lazy">
             </div>
             <div class="modal-tabs">
                     <button class="tab-btn active" data-tab="about" onclick="switchTab('about')">About</button>

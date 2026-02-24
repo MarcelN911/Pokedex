@@ -1,6 +1,8 @@
+
 async function openModal(id) {
     let modal = document.getElementById("modalOverlay");
     modal.classList.add("active");
+    document.body.style.overflow = "hidden";
     let pokemon = await loadPokemon(id);
     window.currentPokemonId = id;
     window.currentPokemon = pokemon;
@@ -22,7 +24,19 @@ async function updateModal(direction) {
 function closeModal() {
     let modal = document.getElementById("modalOverlay");
     modal.classList.remove("active");
+    document.body.style.overflow = "";
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('modalOverlay');
+    if (overlay) {
+        overlay.addEventListener('click', function(event) {
+            if (event.target === overlay) {
+                closeModal();
+            }
+        });
+    }
+});
 
 function getModalData(pokemon) {
     return {

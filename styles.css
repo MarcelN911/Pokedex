@@ -1,3 +1,82 @@
+.alert {
+    display: none;
+}
+
+.search-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 60px auto 0 auto;
+    max-width: 400px;
+    background: rgba(255,255,255,0.07);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 18px;
+    padding: 28px 30px 24px 30px;
+    box-shadow: 0 6px 32px rgba(0,0,0,0.18);
+    letter-spacing: 0.5px;
+    font-family: 'Poppins', sans-serif;
+    border: 2px solid #f7c745;
+}
+.search-hint span {
+    color: #f7c745;
+    font-weight: 700;
+    background: rgba(255,255,255,0.18);
+    border-radius: 10px;
+    padding: 3px 12px;
+    margin: 0 3px;
+    font-size: 22px;
+    display: inline-block;
+}
+
+.loader-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(26, 26, 46, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    transition: opacity 0.3s;
+}
+
+.pokeball-loader {
+    width: 64px;
+    height: 64px;
+    border: 8px solid #fff;
+    border-bottom: 8px solid #f7c745;
+    border-radius: 50%;
+    position: relative;
+    animation: pokeball-spin 1s linear infinite;
+    margin-bottom: 18px;
+}
+.pokeball-loader::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px; height: 24px;
+    background: #fff;
+    border: 6px solid #f7c745;
+    border-radius: 50%;
+    z-index: 2;
+}
+@keyframes pokeball-spin {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
+.loader-text {
+    color: #f7c745;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 8px;
+    font-family: 'Poppins', sans-serif;
+}
 :root {
     --bg-dark: #1a1a2e;
     --bg-darker: #12121c;
@@ -119,7 +198,7 @@ header a {
 
 .main-content {
     flex: 1;
-    max-width: 1400px;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 40px 20px;
     width: 100%;
@@ -130,6 +209,7 @@ header a {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 24px;
     margin-bottom: 40px;
+    /* Keine Zentrierung, Karten stehen links */
 }
 
 .pokemon-card {
