@@ -209,7 +209,6 @@ header a {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 24px;
     margin-bottom: 40px;
-    /* Keine Zentrierung, Karten stehen links */
 }
 
 .pokemon-card {

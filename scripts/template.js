@@ -48,8 +48,9 @@ function createCardTemplate(pokemon) {
 
 function createCardModal(pokemon) {
     const data = getModalData(pokemon);
+    const mainType = data.mainType;
     return `
-        <div class="modal bg-${data.mainType}" id="pokemonModal">
+        <div class="modal bg-${mainType}" id="pokemonModal">
             <button class="modal-close" id="modalClose" onclick="closeModal()">×</button>
             <button class="modal-nav modal-prev" id="modalPrev" onclick="updateModal(-1)">◀</button>
             <button class="modal-nav modal-next" id="modalNext" onclick="updateModal(1)">▶</button>

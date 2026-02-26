@@ -6,6 +6,10 @@ async function openModal(id) {
     let pokemon = await loadPokemon(id);
     window.currentPokemonId = id;
     window.currentPokemon = pokemon;
+
+    const mainType = pokemon.types[0].type.name;
+    modal.className = "modal-overlay active type-" + mainType;
+
     modal.innerHTML = createCardModal(pokemon);
     document.getElementById("modalContent").innerHTML = modalContentAbout(pokemon);
 }
@@ -17,6 +21,9 @@ async function updateModal(direction) {
     let pokemon = await loadPokemon(newId);
     window.currentPokemonId = newId;
     window.currentPokemon = pokemon;
+    const modal = document.getElementById("modalOverlay");
+    const mainType = pokemon.types[0].type.name;
+    modal.className = "modal-overlay active type-" + mainType;
     document.getElementById("pokemonModal").outerHTML = createCardModal(pokemon);
     document.getElementById("modalContent").innerHTML = modalContentAbout(pokemon);
 }
